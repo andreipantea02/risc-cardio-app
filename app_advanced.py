@@ -161,24 +161,56 @@ if st.button("Calculează Riscul", type="primary", use_container_width=True):
     st.divider()
 
     with st.expander("Metodologia și funcționarea algoritmului"):
-        st.write("Acest instrument digital folosește un model de învățare automată denumit arbore de decizie. În loc să memoreze datele, algoritmul extrage reguli logice din zeci de mii de dosare medicale aparținând populației generale. Procesul de evaluare începe de la o rădăcină principală, reprezentată de obicei de tensiunea arterială sistolică, și se ramifică succesiv în funcție de variabilele introduse, precum vârsta, sexul sau nivelul colesterolului. Pentru a preveni fenomenul de supraspecializare, adâncimea acestui arbore a fost limitată intenționat la o valoare optimă, forțând astfel inteligența artificială să generalizeze informația și să ofere predicții robuste pentru pacienți noi. Suplimentar, aplicația calculează automat parametri avansați, printre care indicele de masă corporală și presiunea pulsului, adăugând aceste valori în traseul decizional pentru a rafina scorul final. Această arhitectură matematică asigură o analiză clinică onestă și validată științific, reflectând fidel interacțiunea complexă dintre stilul de viață și fiziologia umană.")
+        st.write("Acest instrument digital folosește un model de învățare automată denumit arbore de decizie. În loc să memoreze datele, algoritmul extrage reguli logice din zeci de mii de dosare medicale aparținând populației generale. Procesul de evaluare începe de la o rădăcină principală, reprezentată de obicei de tensiunea arterială sistolică, și se ramifică succesiv în funcție de variabilele introduse, precum vârsta, sexul sau nivelul colesterolului. Pentru a preveni fenomenul de supraspecializare, adâncimea acestui arbore a fost limited intenționată la o valoare optimă, forțând astfel inteligența artificială să generalizeze informația și să ofere predicții robuste pentru pacienți noi. Suplimentar, aplicația calculează automat parametri avansați, printre care indicele de masă corporală și presiunea pulsului, adăugând aceste valori în traseul decizional pentru a varia scorul final. Această arhitectură matematică asigură o analiză clinică onestă și validată științific, reflectând fidel interacțiunea complexă dintre stilul de viață și fiziologia umană.")
 
+    # GENERARE DOSAR MEDICAL CU DATE REVIZUITE (OPEN SOURCE)
     data_curenta = datetime.datetime.now().strftime("%Y/%m/%d %H:%M")
-    continut_raport = "DOSAR MEDICAL ANALIZA RISC CARDIOVASCULAR AI\n\n"
+    continut_raport = "DOSAR MEDICAL ANALIZA RISC CARDIOVASCULAR AI\n"
+    continut_raport += "==================================================\n\n"
     continut_raport += "Data generarii: " + data_curenta + "\n\n"
     continut_raport += "Parametri analizati:\n"
     continut_raport += "Varsta: " + str(age) + " ani\n"
     continut_raport += "Inaltime: " + str(height) + " cm\n"
     continut_raport += "Greutate: " + str(weight) + " kg\n"
-    continut_raport += "Tensiune Sistolica: " + str(ap_hi) + "\n"
-    continut_raport += "Tensiune Diastolica: " + str(ap_lo) + "\n\n"
+    continut_raport += "Tensiune Sistolica: " + str(ap_hi) + " mmHg\n"
+    continut_raport += "Tensiune Diastolica: " + str(ap_lo) + " mmHg\n\n"
     continut_raport += "REZULTAT EVALUARE: " + str(probabilitate_risc) + "%\n"
     continut_raport += "Diagnostic: " + mesaj_diagnostic + "\n\n"
     continut_raport += "Factori determinanti in decizia algoritmului:\n"
     for idx, f in enumerate(factori_top):
         continut_raport += str(idx+1) + ". " + f + "\n"
+    
+    # Metadate modificate pentru a reflecta proiectul open source
+    continut_raport += "\n--------------------------------------------------\n"
+    continut_raport += "METADATE SISTEM & LICENȚIERE\n"
+    continut_raport += "Sistem: CardioRisk AI Predictor\n"
+    continut_raport += "Versiune: v1.0.0 (Iunie, 2026)\n"
+    continut_raport += "Dezvoltatori: Pantea Andrei & Luca Novac\n"
+    continut_raport += "Licență: Open Source (MIT License)\n\n"
+    continut_raport += "DISCLAIMER: Acest raport este generat de un instrument demonstrativ bazat pe modele statistice de Machine Learning. Rezultatele au scop pur educațional și de screening preventiv, neputând înlocui un consult medical sau un diagnostic clinic oficial oferit de personal calificat.\n"
         
     st.download_button(label="Descarcă Dosarul Medical", data=continut_raport, file_name="dosar_medical_cardio.txt", mime="text/plain", use_container_width=True)
 
     scroll_script = "<script>setTimeout(function() {window.frameElement.scrollIntoView({behavior: 'smooth', block: 'end'});}, 100);</script>"
     components.html(scroll_script, height=0)
+
+# SUBSOLUL APLICAȚIEI ACTUALIZAT (OPEN SOURCE / FĂRĂ COPYRIGHT RESTRICTIV)
+st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown("---")
+st.markdown(
+    """
+    <div style="display: flex; justify-content: space-between; align-items: center; color: #64748b; font-size: 0.85rem; padding: 10px 0;">
+        <div>
+            <b>CardioRisk AI Predictor</b> | Versiunea 1.0.0
+        </div>
+        <div style="text-align: right;">
+            Dezvoltat de <b>Pantea Andrei</b><br>
+            Cod Sursă sub licență <b>Open Source (MIT)</b>
+        </div>
+    </div>
+    <div style="text-align: center; color: #94a3b8; font-size: 0.75rem; margin-top: 10px;">
+        <i>Disclaimer: Acest sistem este un instrument demonstrativ de conștientizare și screening preventiv. Rezultatele nu înlocuiesc un diagnostic clinic oficial oferit de personalul medical calificat.</i>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
