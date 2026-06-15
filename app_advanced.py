@@ -205,7 +205,7 @@ st.markdown(
         </div>
         <div style="text-align: right;">
             Dezvoltat de <b>Pantea Andrei</b><br>
-            Cod Sursă sub licență <b>Open Source (MIT)</b>
+            Cod sursă sub licență <b>Open Source (MIT)</b>
         </div>
     </div>
     <div style="text-align: center; color: #94a3b8; font-size: 0.75rem; margin-top: 10px;">
